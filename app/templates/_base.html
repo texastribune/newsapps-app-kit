@@ -3,22 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>{{ META.project_title}} | The Texas Tribune</title>
-
-  <!--   Open Graph -->
-  <meta property="og:site_name" content="The Texas Tribune">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="">
-  <meta property="og:title" content="{{ META.project_title }}">
-  <meta property="og:description" content="{{ META.description }}">
-  <meta property="og:image" content="">
-
-  <!-- Twitter settings -->
-  <meta name="twitter:card" value="summary_large_image">
-  <meta name="twitter:site" value="@TexasTribune">
-  <meta name="twitter:creator" content="@newsapps">
-  <meta name="twitter:title" content="{{ META.project_title }}">
-  <meta name="twitter:description" content="{{ META.shareline }}">
-  <meta name="twitter:image" content="">
+  {% include 'includes/_social_meta.html' %}
   {% block styles %}
   <link rel="stylesheet" href="styles/main.css">
   {% endblock %}
@@ -30,13 +15,6 @@
 {% block script %}
 <script src="scripts/main.js"></script>
 {% endblock %}
-<script>
-  (function(c,o,r,g,i,s){c.GoogleAnalyticsObject=g;c[g]||(c[g]=
-  function(){(c[g].q=c[g].q||[]).push(arguments)});c[g].g=+new Date;
-  i=o.createElement(r);s=o.getElementsByTagName(r)[0];
-  i.src='//www.google-analytics.com/analytics.js';
-  s.parentNode.insertBefore(i,s)}(window,document,'script','ga'));
-  ga('create','UA-9827490-1');ga('send','pageview');
-</script>
+{% include 'includes/_google_analytics.html' %}
 </body>
 </html>
