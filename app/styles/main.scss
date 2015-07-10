@@ -1,2 +1,4 @@
-@import 'bower_components/newsapps-styles/init-helpers';
-@import 'bower_components/newsapps-styles/initialize';
+@import 'node_modules/newsapps-styles/init-helpers';
+// To pull in additional base styles, such as themes and components:
+// @import 'node_modules/newsapps-styles/initialize';
+
