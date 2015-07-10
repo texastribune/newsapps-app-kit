@@ -1,6 +1,6 @@
 # The News Apps App Kit
 
-This package helps jump start special Tribune features and series that are built outside the regular CMS. It's a bit Tribune-centric, but easy to update and transform to fit your needs. If you're working on a graphic, use the [News Apps Graphic Kit](https://github.com/texastribune/newsapps-graphic-kit), which is similar, but comes with NPR's [pym.js](http://blog.apps.npr.org/pym.js/) to help you embed with a responsive iframe.
+This package helps jump start special Tribune features and series that are built outside the regular CMS. It's Tribune-centric, but easy to update and transform to fit your needs. If you're working on a graphic, use the [News Apps Graphic Kit](https://github.com/texastribune/newsapps-graphic-kit). It is similar to the App Kit, but comes with NPR's [pym.js](http://blog.apps.npr.org/pym.js/) to help you embed with a responsive `<iframe>`.
 
 ## Features
 
@@ -20,21 +20,30 @@ This package helps jump start special Tribune features and series that are built
 Run this command in your project's folder:
 
 ```sh
-curl -fsSL https://github.com/texastribune/newsapps-graphic-kit/archive/master.tar.gz | tar -xz --strip-components=1
+curl -fsSL https://github.com/texastribune/newsapps-app-kit/archive/master.tar.gz | tar -xz --strip-components=1
 ```
 
 Next, `npm install`.
 
 If this is your first time to ever use the kit, you need to authorize your computer: `npm run spreadsheet/authorize`
 
-
 Add your Google sheet's ID to the `config.json`, and override any sheets that need to be processed differently. (`keyvalue` or `objectlist`)
 
-Get to work!
+Now get to work!
+
+## Development
+
+Run the following command to start the development server:
+
+```sh
+gulp serve
+```
+
+Then visit [http://localhost:3000]() to see your work.
 
 ## Connect to S3
 
-To use the commands to deploy your project to Amazon S3, you'll need to add a [profile newsapps] to ~/.aws/config. It should look something like this:
+To use the commands to deploy your project to Amazon S3, you'll need to add a profile to your ~/.aws/config. It should look something like this:
 
 ```
 [profile newsapps]
@@ -42,20 +51,20 @@ aws_access_key_id=YOUR_UNIQUE_ID
 aws_secret_access_key=YOUR_SECRET_ACCESS_KEY
 ```
 
-Then you can run these commands to build and deploy:
+## Deployment
+
+Run these commands to build and deploy:
 
 ```
 gulp
 npm run deploy
 ```
 
-The package will deploy to graphics.texastribune.org/donor-wall. To change the location, update the package.json file.
+The project will deploy using the S3 bucket and slug found in your `package.json`.
 
 ## Assets
 
 The graphics kit comes with an empty app/assets folder for you to store images, fonts and data files. The kit works best if you add these files to app/assets/images, app/assets/fonts and app/assets/data. These files will automatically be ignored by git hub, if added to the proper folders, to prevent a storage overload and to keep files locally that may have sensitive information in an open source project.
-
-*[Yeoman](http://yeoman.io/) is being considered.*
 
 ## Available Commands
 
