@@ -59,7 +59,7 @@ gulp.task('templates', function() {
   data.SITE = packageData.config;
 
   // disable watching or it'll hang forever
-  nunjucks.configure('app', {watch: false});
+  nunjucks.configure('./app/templates', {watch: false});
 
   var nunjuckified = map(function(code, filename) {
     return nunjucks.renderString(code.toString(), data);

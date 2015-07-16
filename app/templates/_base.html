@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>{{ META.project_title}} | The Texas Tribune</title>
-  <!--   Add Open Graph and Twitter <meta> tags-->
-  {% include "include/social_meta.html" %}
+  {% include 'includes/_social_meta.html' %}
   {% block styles %}
   <link rel="stylesheet" href="styles/main.css">
   {% endblock %}
@@ -16,6 +15,6 @@
 {% block script %}
 <script src="scripts/main.js"></script>
 {% endblock %}
-{% include "include/google_analytics.html" %}
+{% include 'includes/_google_analytics.html' %}
 </body>
 </html>
