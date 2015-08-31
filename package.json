@@ -9,11 +9,14 @@
     "newsapps-styles": "^1.1.0"
   },
   "scripts": {
-    "spreadsheet/authorize": "./bin/authorize.js",
-    "spreadsheet/fetch": "./bin/fetch_spreadsheet.js",
-    "spreadsheet/edit": "./bin/edit_spreadsheet.js",
-    "assets/push": "./bin/push_assets_to_s3.sh",
     "assets/pull": "./bin/pull_assets_from_s3.sh",
-    "deploy": "./bin/deploy.sh && npm run assets/push"
+    "assets/push": "./bin/push_assets_to_s3.sh",
+    "build": "gulp build --production",
+    "deploy": "./bin/deploy.sh && npm run assets/push",
+    "serve": "gulp serve",
+    "serve/production": "gulp serve --production",
+    "spreadsheet/authorize": "./bin/authorize.js",
+    "spreadsheet/edit": "./bin/edit_spreadsheet.js",
+    "spreadsheet/fetch": "./bin/fetch_spreadsheet.js"
   }
 }
