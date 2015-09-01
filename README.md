@@ -1,14 +1,14 @@
 # The News Apps App Kit
 
-This package helps jump start special Tribune features and series that are built outside the regular CMS. It's Tribune-centric, but easy to update and transform to fit your needs. If you're working on a graphic, use the [News Apps Graphic Kit](https://github.com/texastribune/newsapps-graphic-kit). It is similar to the App Kit, but comes with NPR's [pym.js](http://blog.apps.npr.org/pym.js/) to help you embed with a responsive `<iframe>`.
+This package helps jump start special Tribune features and series that are built outside the regular CMS. It's Tribune-centric, but easy to update and transform to fit your needs. If you're working on a graphic, use the [News Apps Graphic Kit](https://github.com/texastribune/newsapps-graphic-kit).
 
 ## Features
 
 - Live reloading and viewing powered by [BrowserSync](http://www.browsersync.io/)
-- Compiling of Sass/SCSS with [Ruby Sass](http://sass-lang.com/)
+- Compiling of Sass/SCSS with [libSass](http://sass-lang.com/libsass)
 - CSS prefixing with [autoprefixer](https://github.com/postcss/autoprefixer)
 - CSS sourcemaps with [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
-- CSS compression with [csso](https://github.com/css/csso)
+- CSS compression with [clean-css](https://github.com/jakubpawlowicz/clean-css)
 - JavaScript linting with [jshint](http://jshint.com/)
 - JavaScript compression with [uglifyjs](https://github.com/mishoo/UglifyJS2)
 - Template compiling with [nunjucks](http://mozilla.github.io/nunjucks/)
@@ -60,7 +60,7 @@ gulp
 npm run deploy
 ```
 
-The project will deploy using the S3 bucket and slug found in your `package.json`.
+The project will deploy using the S3 bucket and slug found in your `config.json`.
 
 ## Assets
 
@@ -82,6 +82,16 @@ Pulls down the project's spreadsheet and processes it into the `data.json` file.
 npm run spreadsheet/edit
 ```
 Opens the project's spreadsheet in your browser.
+
+```sh
+npm run serve
+```
+Starts the development server.
+
+```sh
+npm run build
+```
+Build the project for production.
 
 ```sh
 npm run deploy
