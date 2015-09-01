@@ -1,6 +1,9 @@
 .sass-cache
 .tmp
-app/assets
+app/assets/fonts/*
+!app/assets/fonts/.gitkeep
+app/assets/images/*
+!app/assets/images/.gitkeep
 bower_components
 dist
 node_modules
