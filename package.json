@@ -1,10 +1,28 @@
 {
   "private": true,
-  "config": {
-    "s3_bucket": "apps.texastribune.org",
-    "slug": ""
+  "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "babel-core": "^5.8.23",
+    "browser-sync": "^2.8.2",
+    "del": "^2.0.0",
+    "gulp": "^3.9.0",
+    "gulp-cache": "^0.3.0",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-minify-html": "^1.0.4",
+    "gulp-postcss": "^5.1.10",
+    "gulp-sass": "^2.0.4",
+    "gulp-size": "^2.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "jshint-stylish": "^2.0.1",
+    "nunjucks": "^2.0.0",
+    "run-sequence": "^1.1.2",
+    "vinyl-map": "^1.0.1",
+    "yargs": "^3.23.0"
   },
-  "devDependencies": {},
   "dependencies": {
     "newsapps-styles": "^1.1.0"
   },
