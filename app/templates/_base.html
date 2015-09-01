@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ META.project_title }} | The Texas Tribune</title>
-  {% include 'includes/_social_meta.html' %}
+{% include 'includes/_social_meta.html' %}
   {% block styles %}
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="{{ PATH_PREFIX }}styles/main.css">
   {% endblock %}
 </head>
 <body>
@@ -14,7 +14,7 @@
 {% block content %}{% endblock %}
 
 {% block script %}
-<script src="scripts/main.js"></script>
+<script src="{{ PATH_PREFIX }}scripts/main.js"></script>
 {% endblock %}
 {% include 'includes/_google_analytics.html' %}
 </body>
