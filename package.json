@@ -1,10 +1,17 @@
 {
   "private": true,
+  "config": {
+    "s3_bucket": "moose.texastribune.org",
+    "slug": "antlers"
+  },
   "devDependencies": {
+    "async": "^1.4.2",
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^5.8.23",
     "browser-sync": "^2.8.2",
+    "chalk": "^1.1.1",
     "del": "^2.0.0",
+    "googleapis": "^2.1.3",
     "gulp": "^3.9.0",
     "gulp-cache": "^0.3.0",
     "gulp-if": "^1.2.5",
@@ -18,9 +25,14 @@
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.5.2",
     "jshint-stylish": "^2.0.1",
+    "marked": "^0.3.5",
+    "nconf": "^0.7.2",
     "nunjucks": "^2.0.0",
+    "request": "^2.61.0",
     "run-sequence": "^1.1.2",
+    "untildify": "^2.1.0",
     "vinyl-map": "^1.0.1",
+    "xlsx": "^0.8.0",
     "yargs": "^3.23.0"
   },
   "dependencies": {
