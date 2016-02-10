@@ -4,18 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ META.project_title }} | The Texas Tribune</title>
-{% include 'includes/_social_meta.html' %}
+  <link rel=icon href=http://apps.texastribune.org.s3.amazonaws.com/favicon.ico>
+  {% include 'includes/_social_meta.html' %}
+  {% include 'includes/_google_analytics.html' %}
   {% block styles %}
   <link rel="stylesheet" href="{{ PATH_PREFIX }}styles/main.css">
   {% endblock %}
+  <script async src='//www.google-analytics.com/analytics.js'></script>
+  <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Bordering on Insecurity - Landing",
+        "url": "{{ data.PATH_FULL }}",
+        "thumbnailUrl": "{{ META.fb_art }}",
+        "dateCreated": "2016-02-09T06:00:00-06:00",
+        "articleSection": "FRONT PAGE, IMMIGRATION, Bordering on Insecurity",
+        "creator": ["Becca Aaronson, The Texas Tribune"]
+      }
+  </script>
 </head>
 <body>
 
 {% block content %}{% endblock %}
 
+{% include "includes/parsely.html" %}
 {% block script %}
 <script src="{{ PATH_PREFIX }}scripts/main.js"></script>
+
 {% endblock %}
-{% include 'includes/_google_analytics.html' %}
 </body>
 </html>
