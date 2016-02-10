@@ -1,1 +1,1 @@
-'use strict';
+import './includes/adLoader';

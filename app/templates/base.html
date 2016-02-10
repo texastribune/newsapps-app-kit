@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% include 'includes/social_meta.html' %}
+  <title>{{ META.project_title }} | The Texas Tribune</title>
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create', 'UA-9827490-1', 'auto');ga('send', 'pageview');var googletag = googletag || {};googletag.cmd = googletag.cmd || [];</script>
+  {% block styles %}
+  <link rel="stylesheet" href="styles/main.css">
+  {% endblock %}
+  <script async src='//www.google-analytics.com/analytics.js'></script>
+</head>
+<body>
+
+{% block content %}{% endblock %}
+
+{% block script %}
+<script src="{{ data.PATH_PREFIX }}scripts/main.js"></script>
+{% endblock %}
+{% include 'includes/parsely.html' %}
+</body>
+</html>
