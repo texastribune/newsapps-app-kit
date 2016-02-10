@@ -1,3 +1,9 @@
-@import 'node_modules/newsapps-styles/init-helpers';
-// Uncomment to pull in additional base styles like themes and components
-// @import 'node_modules/newsapps-styles/initialize';
+// @import 'node_modules/newsapps-styles/init-helpers';
+@import 'node_modules/susy/sass/susy';
+
+@import 'reset';
+@import 'utils';
+
+@import 'prose';
+@import 'images';
+@import 'footer';

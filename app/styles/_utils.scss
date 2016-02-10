@@ -1,0 +1,65 @@
+$font-georgia: Georgia, Times, 'Times New Roman', serif;
+$font-helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// Tribune Colors
+$tribune-black: rgb(17, 17, 17);
+$tribune-teal: rgb(0, 137, 144);
+$tribune-yellow: rgb(255, 194, 0);
+$white: rgb(255, 255, 255);
+
+// Sample Breakpoints
+$small: new-breakpoint(min-width 460px max-width 810px);
+$medium: new-breakpoint(min-width 811px max-width 1080px);
+$large: new-breakpoint(min-width 1081px);
+$sidebar-break: new-breakpoint(min-width 768px);
+$default-mobile: new-breakpoint(max-width 480px);
+
+// Box Sizing
+html {
+  box-sizing: border-box;
+  text-size-adjust: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+// Clearfix
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+ }
+}
+
+%content-padding {
+  padding: 0 1rem;
+}
+
+// Sample Scale / Font Sizes
+$base: 16;
+$xxl: 48;
+$xl: 36;
+$l: 22;
+$m: 18;
+$s: 14;
+$xs: 12;
+
+
+@mixin font-size($f, $pct:1, $bp:$default-mobile) {
+  font-size: $f+px; // for IE8
+  font-size: $f/$base+rem;
+
+  @if $pct != 1 {
+    @include media($bp) {
+      font-size: $f*$pct+px; // for IE8
+      font-size: $f*$pct/$base+rem;
+    }
+  }
+}
