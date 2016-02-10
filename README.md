@@ -5,11 +5,10 @@ This package helps jump start special Tribune features and series that are built
 ## Features
 
 - Live reloading and viewing powered by [BrowserSync](http://www.browsersync.io/)
-- Compiling of Sass/SCSS with [libSass](http://sass-lang.com/libsass)
+- Compiling of Sass/SCSS with [LibSass](http://sass-lang.com/libsass)
 - CSS prefixing with [autoprefixer](https://github.com/postcss/autoprefixer)
 - CSS sourcemaps with [gulp-sourcemaps](https://www.npmjs.com/package/gulp-sourcemaps)
-- CSS compression with [clean-css](https://github.com/jakubpawlowicz/clean-css)
-- JavaScript linting with [jshint](http://jshint.com/)
+- CSS compression with [cssnano](https://github.com/ben-eb/cssnano)
 - JavaScript compression with [uglifyjs](https://github.com/mishoo/UglifyJS2)
 - Template compiling with [nunjucks](http://mozilla.github.io/nunjucks/)
 - Image compression with [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin)
@@ -69,17 +68,9 @@ The graphics kit comes with an empty app/assets folder for you to store images, 
 ## Available Commands
 
 ```sh
-npm run spreadsheet/auth
-```
-Allows your computer to interact with the scraper. Only needs to be done once. Any future uses of the graphic kit can skip this.
-
-```sh
 npm run data/fetch
 ```
-Pulls down the project's spreadsheet and/or documents and creates data files in the data folder.
-
-
-Opens the project's spreadsheet in your browser.
+Pulls down the project's spreadsheet and/or documents and creates data files in the data folder. Will authenticate you with your Google account if needed.
 
 ```sh
 npm run serve
@@ -95,4 +86,3 @@ Build the project for production.
 npm run deploy/dev
 ```
 Deploys the project.
-
