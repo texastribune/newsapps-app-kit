@@ -4,6 +4,7 @@ app/assets/fonts/*
 !app/assets/fonts/.gitkeep
 app/assets/images/*
 !app/assets/images/.gitkeep
+!app/assets/images/test.jpg
 bower_components
 data/*
 !data/.gitkeep
