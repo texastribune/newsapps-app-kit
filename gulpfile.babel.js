@@ -17,11 +17,12 @@ const args = yargs.argv;
 const bs = browserSync.create();
 
 gulp.task('jshint', () => {
-  gulp.src('./app/scripts/**/*.js')
+  return gulp.src('./app/scripts/**/*.js')
     .pipe(bs.reload({stream: true, once: true}))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.if(!bs.active, $.jshint.reporter('fail')));
+    .pipe($.if(!bs.active, $.jshint.reporter('fail')))
+    .pipe(gulp.dest('dist/scripts'));
 });
 
 gulp.task('images', () => {
@@ -47,13 +48,10 @@ gulp.task('assets', () => {
 });
 
 gulp.task('templates', () => {
-  let data = {};
+  let data = JSON.parse(fs.readFileSync('data.json', 'utf8'));
 
   let config = JSON.parse(fs.readFileSync('./config.json'));
   let deployConfig = config.deploy;
-
-  let basePath = args.production ? url.resolve('/', deployConfig.slug) + '/' : '/';
-  data.PATH_PREFIX = basePath;
 
   let fullPath = url.format({
     protocol: 'http',
@@ -124,8 +122,30 @@ gulp.task('clean', cb => {
   return del(['./.tmp/**', './dist/**', '!dist/.git'], {dot: true}, cb);
 });
 
+gulp.task('rev', () => {
+  return gulp.src(['./dist/**/*.css', './dist/**/*.js', './dist/assets/images/**/*'], { base: './dist' })
+    .pipe($.rev())
+    .pipe(gulp.dest('./dist'))
+    .pipe($.rev.manifest())
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('revreplace', ['rev'], () => {
+  var manifest = gulp.src('./dist/rev-manifest.json');
+
+  return gulp.src('./dist/**/*.html')
+    .pipe($.revReplace({manifest: manifest}))
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('gzip', () => {
+  return gulp.src('./dist/**/*.{html,js,css,json,eot,ttf,svg}')
+    .pipe($.gzip({append: false}))
+    .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('build', ['clean'], cb => {
-  runSequence(['assets', 'fonts', 'images', 'jshint', 'styles', 'templates'], cb);
+  runSequence(['assets', 'fonts', 'images', 'jshint', 'styles', 'templates'], ['revreplace'], ['gzip'], cb);
 });
 
 gulp.task('default', ['build']);
