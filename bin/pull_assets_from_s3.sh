@@ -8,4 +8,4 @@ export APP_S3_BUCKET=$npm_package_config_s3_bucket
 export PROJECT_SLUG=$npm_package_config_slug
 
 echo "Pulling assets from S3..."
-aws s3 sync --profile newsapps s3://$APP_S3_BUCKET/$PROJECT_SLUG/raw_assets/ app/assets
+aws s3 sync --profile newsapps s3://$APP_S3_BUCKET/$PROJECT_SLUG/raw_assets/app/assets
