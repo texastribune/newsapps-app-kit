@@ -44,5 +44,5 @@ app/assets/images/*
 
 # Compiled project
 dist
-data
+data/*
 !data/.gitkeep
