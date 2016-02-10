@@ -5,5 +5,7 @@ app/assets/fonts/*
 app/assets/images/*
 !app/assets/images/.gitkeep
 bower_components
+data/*
+!data/.gitkeep
 dist
 node_modules
