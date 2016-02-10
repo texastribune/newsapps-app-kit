@@ -1,14 +1,9 @@
 {% extends 'layouts/story.html' %}
 
+{% set context = data.test %}
+
 {% block styles %}
 {{ super() }}
-{% endblock %}
-
-
-{% block content %}
-
-Hello world!
-
 {% endblock %}
 
 {% block script %}
