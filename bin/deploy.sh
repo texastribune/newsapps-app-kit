@@ -14,7 +14,16 @@ echo "Syncing *.js files to S3..."
 aws s3 sync --acl public-read --profile newsapps --exclude '*.*' --include '*.js' --cache-control 'max-age=31536000' --content-encoding 'gzip' dist s3://$APP_S3_BUCKET/$PROJECT_SLUG/
 
 echo "Syncing *.html files to S3..."
-aws s3 sync --acl public-read --profile newsapps --exclude '*.*' --include '*.html' --cache-control 'no-cache' --content-encoding 'gzip' dist s3://$APP_S3_BUCKET/$PROJECT_SLUG/
+aws s3 sync --acl public-read --profile newsapps --exclude '*.*' --include '*.html' --content-encoding 'gzip' dist s3://$APP_S3_BUCKET/$PROJECT_SLUG/
+
+echo "Syncing image files to S3..."
+aws s3 sync --acl public-read --profile newsapps --exclude '*.*' --include '*.jpg' --include '*.png' --include '*.gif' --cache-control 'max-age=604800' dist s3://$APP_S3_BUCKET/$PROJECT_SLUG/
+
+echo "Syncing *.svg files to S3..."
+aws s3 sync --acl public-read --profile newsapps --exclude '*.*' --include '*.svg' --content-encoding 'gzip' --cache-control 'max-age=604800' dist s3://$APP_S3_BUCKET/$PROJECT_SLUG/
+
+echo "Syncing *.json files to S3..."
+aws s3 sync --acl public-read --profile newsapps --exclude '*.*' --include '*.json' --cache-control 'max-age=3600' --content-encoding 'gzip' dist s3://$APP_S3_BUCKET/$PROJECT_SLUG/
 
 echo "Syncing everything else to S3..."
 aws s3 sync --profile newsapps dist s3://$APP_S3_BUCKET/$PROJECT_SLUG/
