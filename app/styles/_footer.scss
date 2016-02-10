@@ -1,0 +1,97 @@
+$footer-break: 56.25em; // 900px
+
+.footer {
+  background-color: $tribune-black;
+  font-family: $font-helvetica;
+  letter-spacing: .03em;
+  padding: .625rem 0;
+
+  nav {
+    @include susy-media($footer-break) {
+      float: left;
+    }
+
+    &.last-nav {
+      @include susy-media($footer-break) {
+        float: right;
+      }
+    }
+
+    a {
+      color: $white;
+
+      .content & {
+        color: $tribune-black;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  ul {
+    display: block;
+  }
+
+  li {
+    color: $white;
+
+    @include susy-media(max-width $footer-break) {
+      @include font-size(14);
+      @include gallery(6 of 12);
+      padding: .5rem 0;
+      text-align: center;
+    }
+
+    @include susy-media($footer-break) {
+      @include font-size(12);
+      border-left: 1px solid $white;
+      float: left;
+      padding: 0 .5rem;
+      text-align: left;
+    }
+
+    .content & {
+      color: $tribune-black;
+    }
+
+    &:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  .copywrite {
+    color: $white;
+    width: 100%;
+
+    a {
+      color: $white;
+
+      .content & {
+        color: $tribune-black;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .donate {
+    a {
+      color: $tribune-yellow;
+      font-weight: 800;
+
+      .content & {
+        color: $tribune-teal;
+      }
+    }
+  }
+}
+
+.footer-container {
+  @extend %content-padding;
+  @include container(70em);
+}

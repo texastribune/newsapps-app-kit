@@ -1,0 +1,42 @@
+{
+  "doc": {
+    "docx": {
+      "key": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "encoding": null
+    },
+    "odt": {
+      "key": "application/vnd.oasis.opendocument.text",
+      "encoding": null
+    },
+    "rtf": {
+      "key": "application/rtf",
+      "encoding": null
+    },
+    "html": {
+      "key": "text/html",
+      "encoding": "utf8"
+    },
+    "txt": {
+      "key": "text/plain",
+      "encoding": "utf8"
+    },
+    "pdf": {
+      "key": "application/pdf",
+      "encoding": null
+    }
+  },
+  "sheet": {
+    "csv": {
+      "key": "text/csv",
+      "encoding": "utf8"
+    },
+    "pdf": {
+      "key": "application/pdf",
+      "encoding": null
+    },
+    "xlsx": {
+      "key": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "encoding": null
+    }
+  }
+}

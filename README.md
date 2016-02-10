@@ -25,9 +25,9 @@ curl -fsSL https://github.com/texastribune/newsapps-app-kit/archive/master.tar.g
 
 Next, `npm install`.
 
-If this is your first time to ever use the kit, you need to authorize your computer: `npm run spreadsheet/authorize`
+If this is your first time to ever use the kit, you need to follow the steps in your terminal for Google authorization, i.e. go to the given link and paste the token into the terminal.
 
-Add your Google sheet's ID to the `config.json`, and override any sheets that need to be processed differently. (`keyvalue` or `objectlist`)
+Update the `config.js`, and add the unique Google Tokens for your  document(s) and spreadsheet(s). For spreadsheets, you'll need to designate how to process the data, as either a `keyvalue` or `objectlist`.
 
 Now get to work!
 
@@ -60,7 +60,7 @@ gulp
 npm run deploy
 ```
 
-The project will deploy using the S3 bucket and slug found in your `config.json`.
+The project will deploy using the S3 bucket and slug found in your `config.js`.
 
 ## Assets
 
@@ -69,18 +69,16 @@ The graphics kit comes with an empty app/assets folder for you to store images, 
 ## Available Commands
 
 ```sh
-npm run spreadsheet/authorize
+npm run spreadsheet/auth
 ```
 Allows your computer to interact with the scraper. Only needs to be done once. Any future uses of the graphic kit can skip this.
 
 ```sh
-npm run spreadsheet/fetch
+npm run data/fetch
 ```
-Pulls down the project's spreadsheet and processes it into the `data.json` file.
+Pulls down the project's spreadsheet and/or documents and creates data files in the data folder.
 
-```sh
-npm run spreadsheet/edit
-```
+
 Opens the project's spreadsheet in your browser.
 
 ```sh
@@ -94,16 +92,7 @@ npm run build
 Build the project for production.
 
 ```sh
-npm run deploy
+npm run deploy/dev
 ```
 Deploys the project.
 
-```sh
-npm run assets/push
-```
-Pushes the raw assets to the S3 bucket.
-
-```sh
-npm run assets/pull
-```
-Pulls the raw assets down to the local environment.

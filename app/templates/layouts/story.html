@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+
+{% from 'macros/authors.html' import authors %}
+{% import 'macros/prose.html' as prose %}
+
+
+{% block header %}
+<header>
+  <h1>Header Block</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<header class="story-header">
+  <h1 class="story-header__headline">{{ context.headline|widont }}</h1>
+  <p class="story-header__byline">by {{ authors(context.authors) }} | {{ context.pub_date }}</p>
+
+  </div>
+</header>
+
+<figure class="image image--lead-art">
+  <img class="image__img" src="{{ data.PATH_PREFIX}}assets/images/{{ context.lead_art.photo_url }}">
+  <figcaption class="image__caption">{{ context.lead_art.caption }}{% if context.lead_art.credit %} | {{ context.lead_art.credit }}{% endif %}</figcaption>
+</figure>
+
+<article class="prose">
+{% for item in context.prose %}
+{{ prose[item.type](item.value, data) }}
+{% endfor %}
+{% if context.disclosure %}
+{{ prose.disclosure(context.disclosure) }}
+{% endif %}
+{% if context.republish %}
+{{ prose.disclosure(context.republish) }}
+{% endif %}
+</article>
+
+<footer class="footer">
+  <div class="footer-container">
+    <nav>
+      <ul>
+        <li class="copywrite">&copy; 2015 <a href="http://www.texastribune.org/">The Texas Tribune</a></li>
+      </ul>
+    </nav>
+    <nav class="last-nav">
+      <ul>
+        <li><a href="http://www.texastribune.org/about/">About Us</a></li>
+        <li><a href="http://www.texastribune.org/contact/">Contact Us</a></li>
+        <li><a href="http://www.texastribune.org/support-us/donors-and-members/">Who Funds Us?</a></li>
+        <li><a href="http://www.texastribune.org/terms-of-service/">Terms of Service</a></li>
+        <li><a href="http://www.texastribune.org/ethics/">Code of Ethics</a></li>
+        <li><a href="http://www.texastribune.org/privacy/">Privacy Policy</a></li>
+        <li class="donate"><a href="https://www.texastribune.org/join/">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+{% endblock %}

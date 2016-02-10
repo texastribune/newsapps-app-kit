@@ -1,0 +1,75 @@
+.prose {
+  @include font-size($base);
+  font-family: $font-georgia;
+  line-height: 1.6;
+
+  > p {
+    margin-bottom: 1rem;
+  }
+
+  > a {
+    color: $tribune-teal;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__drop-cap {
+    &:first-letter {
+      @include font-size(72);
+      float: left;
+      font-weight: 900;
+      line-height: 1;
+      padding: 0 .25em;
+    }
+  }
+
+  //<h2>
+  &__subhead {
+    font-weight: 600;
+  }
+
+  // <ul> 
+  &__list {}
+
+  // <li>
+  &__list-item {}
+
+  &__disclosure {
+    font-style: italic;
+  }
+}
+
+.story-header {
+  @include clearfix;
+  margin: 0 0 1rem;
+
+  &__headline {
+    @include font-size($xl);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 .25em;
+
+    @include susy-media($sidebar-break) {
+      @include font-size($xxl);
+      line-height: 1.2;
+    }
+
+  }
+
+  &__byline {
+    @include font-size($s);
+    margin: 0 0 2rem;
+  }
+
+  &__byline-link {
+    color: $tribune-teal;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
