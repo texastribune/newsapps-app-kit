@@ -1,0 +1,93 @@
+{% macro text(value) %}
+<p>{{ value }}</p>
+{% endmacro %}
+
+{% macro first(value) %}
+<p class="prose__drop-cap">{{ value }}</p>
+{% endmacro %}
+
+{% macro subhead(value) %}
+<h2 class="prose__subhead">{{ value }}</h2>
+{% endmacro %}
+
+{% macro basic_list(value) %}
+<ul class="prose__list">
+  {% for item in value %}
+  <li class="prose__list-item">{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro blockquote(value) %}
+<aside class="inline{% if value.align %} inline--{{ value.align }}{% endif %}">
+  <blockquote class="blockquote">
+    <p class="blockquote__quote{% if value.quote_class %} blockquote__quote--{{ value.quote_class }}{% endif %}">{{ value.quote }}</p>
+    {% if value.caption %}<cite class="blockquote__caption">{{ value.caption }}</cite>{% endif %}
+  </blockquote>
+</aside>
+{% endmacro %}
+
+{% macro ad(value) %}
+<aside class="ad-slot ad-slot__{{ value.type }}">
+  <div id="gpt-ad-{{ value.type }}-{{ value.id }}"></div>
+</aside>
+{% endmacro %}
+
+{% macro disclosure(value) %}
+<p>{{ value }}</p>
+{% endmacro %}
+
+{% macro image(value, data) %}
+<figure class="image{% if value.alignment %} image--{{ value.alignment }}{% else %} image--full{% endif %}">
+  <img class="image__img" src="{{ data.PATH_PREFIX }}assets/images/{{ value.photo_url }}">
+  <figcaption class="image__caption">{{ value.caption }}{% if value.credit %} | {{ value.credit }}{% endif %}</figcaption>
+</figure>
+{% endmacro %}
+
+{% macro image_lazy(value, data) %}
+<figure class="image{% if value.alignment %} image--{{ value.alignment }}{% else %} image--full{% endif %}">
+  <img class="image__img" data-layzr="{{ data.PATH_PREFIX }}assets/images/{{ value.photo_url }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+  <figcaption class="image__caption">{{ value.caption }}{% if value.credit %} | {{ value.credit }}{% endif %}</figcaption>
+</figure>
+{% endmacro %}
+
+{% macro image_gallery(value, data) %}
+  <div class="image-gallery">
+  {% for image in value.images %}
+  <figure class="image image-gallery__item{% if value.arrangement %} image-gallery__item--{{ value.arrangement }}{% endif %}">
+    <img class="image__img" src="{{ data.PATH_PREFIX }}assets/images/{{ image.photo_url }}">
+    {% if image.caption %}<figcaption class="image__caption">{{ image.caption }}</figcaption>{% endif %}
+  </figure>
+  {% endfor %}
+  </div>
+{% endmacro %}
+
+{% macro inline_list(value) %}
+<aside class="inline inline--right">
+  <div class="inline-list">
+  <h3 class="inline-list__header">{{ value.header }}</h3>
+  <dl class="inline-list__list">
+    {% for item in value.list %}
+    <dt class="inline-list__term">{{ item.link }}</dt>
+    <dd class="inline-list__definition">{{ item.summary }}</dd>
+    {% endfor %}
+  </dl>
+  </div>
+</aside>
+{% endmacro %}
+
+{% macro latest_story(value, data) %}
+<p class="prose__lede"><a href="{{ data.PATH_PREFIX }}{{ data.LATEST_STORY.slug }}.html">{{ value.text }}</a></p>
+{% endmacro %}
+
+{% macro graphic(value) %}
+<aside class="inline inline--basic">
+  <figure class="graphic">
+    <img class="graphic__img" src="{{ data.PATH_PREFIX }}assets/images/{{ value.graphic_url }}">
+    <div class="graphic__explainer">
+      <img class="graphic__map" src="https://api.mapbox.com/v4/texastribune.nf3hk59f/pin-s-town+3C4850({{ value.lonlat }})/{{ value.lonlat }},{{ value.zoom }}/250x150@2x.png?access_token=pk.eyJ1IjoidGV4YXN0cmlidW5lIiwiYSI6Ilo2eDhZWmcifQ.19qcXfOTN6ulkGW5oouiPQ">
+      <p class="graphic__blurb">{{ value.blurb }}</p>
+    </div>
+  </figure>
+</aside>
+{% endmacro %}
