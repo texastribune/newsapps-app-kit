@@ -2,11 +2,7 @@
 
 {% from 'macros/authors.html' import authors %}
 {% import 'macros/prose.html' as prose %}
-{% import 'macros/shares.html' as shares %}
 
-{% set story_grid_headline = 'Other stories' %}
-
-{% block main_class %}content{% endblock %}
 
 {% block header %}
 <header>
@@ -17,14 +13,8 @@
 {% block content %}
 <header class="story-header">
   <h1 class="story-header__headline">{{ context.headline|widont }}</h1>
-  <p class="story-header__byline"> by {{ authors(context.authors) }} | {{ context.pub_date }}</p>
-  <div class="story-header__shares">
-    <ul class="share-row">
-      <li class="share-row__icon"><a class="js-twitter-button" href="{{ shares.twitter(data.PATH_FULL + context.id + '.html', context.twitter_text, 'roadfromrita') }}"><i class="icon-twitter" target="_blank"></i></a></li>
-      <li class="share-row__icon"><a class="js-facebook-button" href="{{ shares.facebook(data.PATH_FULL + context.id + '.html', data.PATH_FULL + context.id + '.html') }}"  target="_blank"><i class="icon-facebook"></i></a></li>
-      <li class="share-row__icon"><a class="js-email-button" href="{{ shares.email(context.headline + ' | Road From Rita', data.PATH_FULL + context.id + '.html') }}"><i class="icon-envelope"></i></a></li>
-    </ul>
-  </div>
+  <p class="story-header__byline">by {{ authors(context.authors) }} | {{ context.pub_date }}</p>
+
   </div>
 </header>
 
