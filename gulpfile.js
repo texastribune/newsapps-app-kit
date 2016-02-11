@@ -76,7 +76,8 @@ const fullPath = url.format({
 data.PATH_FULL = fullPath;
 
 const env = nunjucks.configure('./app/templates', {
-  autoescape: false
+  autoescape: false,
+  noCache: true
 });
 
 gulp.task('templates', () => {
@@ -93,7 +94,7 @@ gulp.task('templates', () => {
     .pipe($.size({title: 'templates', showFiles: true}));
 });
 
-gulp.task('templates-watch', ['templates'], cb => bs.reload());
+gulp.task('templates-watch', ['templates'], bs.reload);
 
 gulp.task('styles', () => {
   return gulp.src('./app/styles/*.scss')
