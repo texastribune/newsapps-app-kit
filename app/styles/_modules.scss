@@ -1,0 +1,155 @@
+.series--logo {
+  img { 
+    margin: .8em auto;
+    max-height: 5em;
+  }
+
+  &__mobile {
+    display: block;
+
+    @include susy-media($prose-width) {
+      display: none;
+    }
+  }
+
+  &__desktop {
+    display: none;
+
+    @include susy-media($prose-width) {
+      display: block;
+    }
+  }
+
+  &__tagline {
+    @include font-size($base);
+    color: $color-gray;
+    font-family: $serif;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: .5rem auto 1rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+}
+
+.storytop {
+  $height: 26;
+  $height-desktop: 30;
+  @include story-header($height+rem, $height-desktop+rem, $height - 4+rem);
+  @include clearfix;
+  margin: -6em 0 0;
+
+  @include susy-media($prose-desktop-bp) {
+    bottom: 0;
+    margin: 0;
+    position: absolute;
+  }
+
+  &--wrapper {
+    color: $color-dk-gray;
+    height: $height;
+    position: relative;
+
+    @include susy-media($prose-desktop-bp) {
+      height: $height-desktop;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &--headline {
+    @include headline($l, $xl);
+  }
+
+  &--headline_sub {
+    @include headline($base, $base);
+  }
+
+  &--byline {
+    @include font-size($s);
+    font-family: $sans-serif;
+    line-height: 1.3;
+    margin: .75rem 0 0;
+  
+    a {
+      color: $color-secondary;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:active,
+      &:hover {
+        text-decoration: underline;
+      }      
+    }
+  }
+
+  &--caption {
+
+    p {
+      @include font-size($xxs);
+      color: $color-gray;
+      font-family: $sans-serif;
+      line-height: 1.1;
+      margin: .5em 1rem;
+    }
+
+    @include susy-media($prose-width) {
+      p { margin: .5em 3rem; }
+    }
+
+    @include susy-media($prose-desktop-bp) {
+      float: right;
+      max-width: 12em;
+
+      p {
+        line-height: 1.3;
+        margin: .5em 0;
+      }
+    }
+  }
+}
+
+.timeline {
+  background-color: transparentize($color-lt-gray, .5);
+  padding: .5em 1em;
+
+  &__list {
+    @include font-size($xs);
+    font-family: $sans-serif;
+
+    li {
+      line-height: 1.5;
+      margin: 0 0 .75em;
+    }
+  } 
+
+  &__date {
+    @include font-size($m);
+    color: $color-primary;
+    font-family: $serif;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0 .25em 0 0;
+  }
+
+  &__subhead {
+    @extend %subhead;
+  }
+
+  &__subtitle {
+    @extend %subtitle;
+  }
+}
+
+.republish {
+  ol {
+    @include font-size($s);
+    list-style: inherit;
+    list-style-type: decimal;
+    margin: 0 0 1em 1em;
+  }
+
+  ul {
+    margin: 0 0 0 1em;
+    list-style-type: circle;
+  }
+}

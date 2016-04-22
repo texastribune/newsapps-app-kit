@@ -1,0 +1,136 @@
+{% extends 'layouts/base.html' %}
+{% from 'macros/authors.html' import authors %}
+{% from 'macros/nav.html' import nav %}
+{% from 'macros/nav.html' import navfooter %}
+{% import 'macros/prose.html' as prose %}
+{% import 'macros/share.html' as share %}
+
+{% block social %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@texastribune">
+<meta name="twitter:creator" content="@texastribune">
+<meta property="og:url" content="{{ data.PATH_FULL }}{{ context.slug }}">
+<meta property="og:title" content="{{ context.headline }}">
+<meta property="og:type" content="article">
+<meta property="og:description" content="{{ context.summary }}">
+<meta property="og:site_name" content="The Texas Tribune">
+<meta property="og:image" content="{{ data.PATH_FULL }}assets/images/{{ context.fb_art }}">
+<meta property="fb:app_id" content="154122474650943">
+{% endblock %}
+
+{% block parsely %}
+<!-- Update articleSection, creator and dateCreated! -->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "headline": "{{ context.headline }}",
+    "url": "{{ data.PATH_FULL }}",
+    "thumbnailUrl": "",
+    "dateCreated": "2016-02-09T06:00:00-06:00",
+    "articleSection": "FRONT PAGE, HIGHER EDUCATION",
+    "creator": ["Becca Aaronson, The Texas Tribune"]
+  }
+</script>
+{% endblock %}
+
+{% block header %}
+  {{ nav() }}
+{% endblock %}
+
+{% block content %}
+<main class="main-body">
+
+  <!-- Series Logo -->
+  <figure class="series--logo">
+    <!-- Mobile Series Logo -->
+    <img class="series--logo__mobile" src="{{ data.PATH_PREFIX }}assets/images/demo/fake-logo.png">
+    <!-- Desktop Series Logo -->
+    <img class="series--logo__desktop" src="{{ data.PATH_PREFIX }}assets/images/demo/fake-logo.png">
+  </figure>
+
+  <!-- Series Tagline -->
+  <header>
+    <h1 class="series--logo__tagline">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla neque dolor, sagittis eget.</h1>
+  </header>
+
+  <!-- Story Top: Lead Art / Headline / Byline -->
+  <div class="storytop--wrapper">
+    <!-- Lead Art - Set as a background image on a specific class for each story. -->
+    <div class="storytop--lead-art storytop--lead-art_{{ context.id }}"></div>
+    <div class="storytop--caption">
+      <p>{{ context.lead_art.caption }} | {{ context.lead_art.credit }}</p>
+    </div>
+    <header class="storytop">
+      <!-- Part # -->
+      <div class="storytop--part">{% if (context.id == 'i' or context.id == 'ii' or context.id == 'iii') %}Part {% endif %}{{ context.id }}</div>
+
+      <div class="storytop--headline-box">
+        <!-- Headline -->
+        <h1 class="storytop--headline">{{ context.headline }}</h1>
+        <!-- Byline, Pub Date -->
+        <p class="storytop--byline">by {{ authors(context.authors) }} | {{ context.pub_date }}</p>
+      </div>     
+    </header>
+  </div>
+
+  <article class="prose">
+    <!-- Share buttons -->
+    <ul class="prose__shares">
+      <!-- Twitter -->
+      <li><a href="{{ share.twitter(data.PATH_FULL, context.slug, context.twitter_text, 'highered') }}">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-twitter fa-stack-1x"></i>
+        </span>
+      </a></li>
+      <!-- Facebook -->
+      <li><a href="{{ share.facebook(data.PATH_FULL, context.slug) }}"  target="_blank">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-facebook fa-stack-1x"></i>
+        </span>
+      </a></li>
+    </ul>
+
+  <!-- Loops through your prose data 
+       and builds components from macros in prose.html -->
+  {% for item in context.prose %}
+  {{ prose[item.type](item.value, data) }}
+  {% endfor %}
+  {% if context.disclosure %}
+  {{ prose.disclosure(context.disclosure) }}
+  {% elif context.republish %}
+  {{ prose.republish(context.slug) }}
+  {% endif %}
+  </article>
+  
+  <!-- Footer - Bottom Story Nav / Contributors ) -->
+  {{ navfooter(context.id, context.headline) }}
+</main>
+<footer class="footer">
+  <div class="footer-container">
+    <nav>
+      <ul>
+        <li class="copywrite">&copy; 2016 <a href="http://www.texastribune.org/">The Texas Tribune</a></li>
+      </ul>
+    </nav>
+    <nav class="last-nav">
+      <ul>
+        <li><a href="http://www.texastribune.org/about/">About Us</a></li>
+        <li><a href="http://www.texastribune.org/contact/">Contact Us</a></li>
+        <li><a href="http://www.texastribune.org/support-us/donors-and-members/">Who Funds Us?</a></li>
+        <li><a href="http://www.texastribune.org/terms-of-service/">Terms of Service</a></li>
+        <li><a href="http://www.texastribune.org/ethics/">Code of Ethics</a></li>
+        <li><a href="http://www.texastribune.org/privacy/">Privacy Policy</a></li>
+        <li class="donate"><a href="https://www.texastribune.org/join/">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script src="{{ data.PATH_PREFIX }}scripts/{{ context.script }}.js"></script>
+{% endblock %}

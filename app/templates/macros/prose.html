@@ -1,0 +1,133 @@
+{% from 'macros/demographic_charts.html' import demographics %}
+{% from 'macros/scatter_charts.html' import scatter %}
+{% from 'macros/nav.html' import navaside, navfooter %}
+{% from 'macros/timeline.html' import build_timeline %}
+
+{% macro text(value) %}
+<p>{{ value|safe }}</p>
+{% endmacro %}
+
+{% macro html_text(value) %}
+&lt;p>{{ value|escape }}&lt;/p>
+{% endmacro %}
+
+{% macro subhead(value) %}
+<h2 class="prose__subhead">{{ value }}</h2>
+{% endmacro %}
+
+{% macro basic_list(value) %}
+<ul class="prose__list">
+  {% for item in value %}
+  <li class="prose__list-item">{{ item }}</li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro blockquote(value) %}
+<aside{% if value.alignment %} class="prose--{{ value.alignment }}{% endif %}">
+  <blockquote class="prose__blockquote">
+    <div class="prose__blockquote--quotemark">&ldquo;</div>
+    <p class="prose__blockquote--quote{% if value.quote_class %} blockquote__quote--{{ value.quote_class }}{% endif %}">{{ value.quote }}</p>
+    {% if value.caption %}<p class="prose__blockquote--caption">&mdash; {{ value.caption }}</p>{% endif %}
+  </blockquote>
+</aside>
+{% endmacro %}
+
+{% macro ad(value) %}
+<aside class="ad-slot ad-slot__{{ value.type }}{% if value.alignment %} ad-slot--{{ value.alignment }}{% endif %}">
+  <div id="ad-{{ value.type }}-{{ value.id }}"></div>
+</aside>
+{% endmacro %}
+
+{% macro timeline(value) %}
+  <aside class="prose--{{ value.alignment }}">
+  {% if value.date %}
+    <span class="timeline--">{{ value.date }}</span>
+  {% endif %}
+  {{ build_timeline(value) }}
+  </aside>
+{% endmacro %}
+
+{% macro nav_aside(value) %}
+  {{ navaside() }}
+{% endmacro %}
+
+{% macro demographic_charts(value) %}
+  {{ demographics(value) }}
+{% endmacro %}
+
+{% macro interactive_plug(value) %}
+  <aside class="prose--{{ value.alignment }}">
+    <header>
+      <h2 class="chart__subhead"><a href="{{ PATH_PREFIX }}interactive">{{ value.title }}</a></h2>
+    </header>
+    <p class="prose__subtitle">{{ value.text }}</p>
+  </aside>
+{% endmacro %}
+
+{% macro scatter_charts(value) %}
+  {{ scatter(value) }}
+{% endmacro %}
+
+{% macro disclosure(value) %}
+<p class="prose__disclosure">{{ value }}</p>
+{% endmacro %}
+
+{% macro republish(value) %}
+<p class="prose__disclosure">To republish this story for free, click <a href="../{% if value.slug != '' %}{{ value.slug }}-{% endif %}republish">here</a> or email <a href="mailto:editors@texastribune.org">editors@texastribune.org</a>.</p>
+{% endmacro %}
+
+{% macro image(value, data) %}
+<figure class="image{% if value.alignment %} prose--{{ value.alignment }}{% else %} image--full{% endif %}">
+  <img class="image__img" src="{{ data.PATH_PREFIX }}assets/images/{{ value.photo_url }}">
+  <figcaption class="image__caption">{{ value.caption }}{% if value.credit %} | {{ value.credit }}{% endif %}</figcaption>
+</figure>
+{% endmacro %}
+
+{% macro image_lazy(value, data) %}
+<figure class="image{% if value.alignment %} image--{{ value.alignment }}{% else %} image--full{% endif %}">
+  <img class="image__img" data-layzr="{{ data.PATH_PREFIX }}assets/images/{{ value.photo_url }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+  <figcaption class="image__caption">{{ value.caption }}{% if value.credit %} | {{ value.credit }}{% endif %}</figcaption>
+</figure>
+{% endmacro %}
+
+{% macro image_gallery(value, data) %}
+  <div class="image-gallery">
+  {% for image in value.images %}
+  <figure class="image image-gallery__item{% if value.arrangement %} image-gallery__item--{{ value.arrangement }}{% endif %}">
+    <img class="image__img" src="{{ data.PATH_PREFIX }}assets/images/{{ image.photo_url }}">
+    {% if image.caption %}<figcaption class="image__caption">{{ image.caption }}</figcaption>{% endif %}
+  </figure>
+  {% endfor %}
+  </div>
+{% endmacro %}
+
+{% macro inline_list(value) %}
+<aside class="inline inline--right">
+  <div class="inline-list">
+  <h3 class="inline-list__header">{{ value.header }}</h3>
+  <dl class="inline-list__list">
+    {% for item in value.list %}
+    <dt class="inline-list__term">{{ item.link }}</dt>
+    <dd class="inline-list__definition">{{ item.summary }}</dd>
+    {% endfor %}
+  </dl>
+  </div>
+</aside>
+{% endmacro %}
+
+{% macro latest_story(value, data) %}
+<p class="prose__lede"><a href="{{ data.PATH_PREFIX }}{{ data.LATEST_STORY.slug }}.html">{{ value.text }}</a></p>
+{% endmacro %}
+
+{% macro graphic(value) %}
+<aside class="inline inline--basic">
+  <figure class="graphic">
+    <img class="graphic__img" src="{{ data.PATH_PREFIX }}assets/images/{{ value.graphic_url }}">
+    <div class="graphic__explainer">
+      <img class="graphic__map" src="https://api.mapbox.com/v4/texastribune.nf3hk59f/pin-s-town+3C4850({{ value.lonlat }})/{{ value.lonlat }},{{ value.zoom }}/250x150@2x.png?access_token=pk.eyJ1IjoidGV4YXN0cmlidW5lIiwiYSI6Ilo2eDhZWmcifQ.19qcXfOTN6ulkGW5oouiPQ">
+      <p class="graphic__blurb">{{ value.blurb }}</p>
+    </div>
+  </figure>
+</aside>
+{% endmacro %}

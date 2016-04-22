@@ -1,4 +1,19 @@
-@import 'node_modules/newsapps-styles/init-helpers';
-// To pull in additional base styles, such as themes and components:
-// @import 'node_modules/newsapps-styles/initialize';
+// @import 'node_modules/newsapps-styles/init-helpers';
+@import 'node_modules/susy/sass/susy';
 
+@import 'reset';
+@import 'utils';
+
+@import 'chosen';
+@import 'prose';
+@import 'modules';
+@import 'nav';
+@import 'images';
+@import 'footer';
+@import 'charts';
+
+.main-body {
+  margin: 0 auto;
+  max-width: $page-width;
+  width: 100%;
+}

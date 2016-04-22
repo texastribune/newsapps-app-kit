@@ -1,0 +1,14 @@
+{% macro authors(value) %}
+{% if value|length == 0 %}
+{% elif value|length == 1 %}
+{{ email(value[0]) }}
+{% elif value|length == 2 %}
+{{ email(value[0]) }} and {{ email(value[1]) }}
+{% else %}
+ADD SUPPORT FOR THREE AUTHORS
+{% endif %}
+{% endmacro %}
+
+{% macro email(value) %}
+<a class="story-head__byline-link" href="mailto:{{ value.email }}">{{ value.name }}</a>
+{% endmacro %}

@@ -1,0 +1,162 @@
+$footer-break: 56.25em; // 900px
+
+.footer {
+  background-color: $tribune-black;
+  font-family: $font-helvetica;
+  letter-spacing: .03em;
+  padding: .625rem 0;
+
+  nav {
+    @include susy-media($footer-break) {
+      float: left;
+    }
+
+    &.last-nav {
+      @include susy-media($footer-break) {
+        float: right;
+      }
+    }
+
+    a {
+      color: $white;
+
+      .content & {
+        color: $tribune-black;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  ul {
+    display: block;
+  }
+
+  li {
+    color: $white;
+
+    @include susy-media(max-width $footer-break) {
+      @include font-size(14);
+      @include gallery(6 of 12);
+      padding: .5rem 0;
+      text-align: center;
+    }
+
+    @include susy-media($footer-break) {
+      @include font-size(12);
+      border-left: 1px solid $white;
+      float: left;
+      padding: 0 .5rem;
+      text-align: left;
+    }
+
+    .content & {
+      color: $tribune-black;
+    }
+
+    &:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  .copywrite {
+    color: $white;
+    width: 100%;
+
+    a {
+      color: $white;
+
+      .content & {
+        color: $tribune-black;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .donate {
+    a {
+      color: $tribune-yellow;
+      font-weight: 800;
+
+      .content & {
+        color: $tribune-teal;
+      }
+    }
+  }
+
+  // List of Project Contributors
+  &__credit {
+    &--container {
+      @include clearfix;
+      margin: 0 1rem 1rem;
+      max-width: $page-width;
+
+      @include susy-media($prose-premobile-bp) {
+        margin: 0 2rem 1rem;
+      }
+    }
+
+    &--group {
+      float: left;
+      width: 100%;
+
+      @include susy-media($prose-premobile-bp) {
+        padding: 0 1rem;
+        width: 50%;
+        &:last-child {
+          padding: 0 2rem;
+        }
+      }
+    }
+
+    &--list {
+      margin: 0 0 1rem;
+    }
+
+    &--header {
+      @include font-size($m);
+      color: $color-gray;
+      font-family: $serif;
+      font-style: italic;
+      margin: 1rem 0;
+
+      @include susy-media($prose-premobile-bp) {
+        margin: 1rem;
+      }
+    }
+
+    &--subhead {
+      @extend %subhead;
+      @include font-size($s);
+    }
+
+    &--byline {
+      @include font-size($s);
+      font-family: $sans-serif;
+      line-height: 1.1;
+      margin: .25rem 0 0;
+    
+      a {
+        color: $color-secondary;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:active,
+        &:hover {
+          text-decoration: underline;
+        }      
+      }
+    }
+  }
+}
+
+.footer-container {
+  @extend %content-padding;
+  @include container(70em);
+}

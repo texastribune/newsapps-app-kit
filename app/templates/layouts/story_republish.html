@@ -1,0 +1,111 @@
+{% extends 'layouts/base.html' %}
+
+{% from 'macros/authors.html' import authors %}
+{% from 'macros/nav.html' import nav %}
+{% from 'macros/nav.html' import navfooter %}
+
+{% import 'macros/prose.html' as prose %}
+
+{% block header %}
+  {{ nav(context.id, context.short_head) }}
+{% endblock %}
+
+{% block content %}
+<main class="main-body">
+  <!-- Series Logo -->
+  <figure class="series--logo">
+    <!-- Mobile Series Logo -->
+    <img class="series--logo__mobile" src="{{ data.PATH_PREFIX }}assets/images/demo/fake-logo.png">
+    <!-- Desktop Series Logo -->
+    <img class="series--logo__desktop" src="{{ data.PATH_PREFIX }}assets/images/demo/fake-logo.png">
+  </figure>
+
+  <!-- Series Tagline -->
+  <header>
+    <h1 class="series--logo__tagline">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla neque dolor, sagittis eget.</h1>
+  </header>
+
+  <!-- Story Top: Lead Art / Headline / Byline -->
+  <div class="storytop--wrapper">
+    <!-- Lead Art - Set as a background image on a specific class for each story. -->
+    <div class="storytop--lead-art storytop--lead-art_{{ context.id }}"></div>
+    <div class="storytop--caption">
+      <p>{{ context.lead_art.caption }} | {{ context.lead_art.credit }}</p>
+    </div>
+    <header class="storytop">
+      <!-- Part # -->
+      <div class="storytop--part">{% if (context.id == 'i' or context.id == 'ii' or context.id == 'iii') %}Part {% endif %}{{ context.id }}</div>
+
+      <div class="storytop--headline-box">
+        <!-- Headline -->
+        <h1 class="storytop--headline">{{ context.headline }}</h1>
+        <!-- Byline, Pub Date -->
+        <p class="storytop--byline">by {{ authors(context.authors) }} | {{ context.pub_date }}</p>
+      </div>     
+    </header>
+  </div>
+  
+  <article class="prose prose__republish">
+    <p>You’re welcome to republish our articles and graphics for free using the following ground rules. (Please let us know if you republish our stories; it makes us happy!)</p>
+    <p>See a full list of multimedia republishing terms <a href="http://www.texastribune.org/republishing-guidelines/">here</a>. For questions please contact Natalie Choate, director of media relations and partnerships, at <a href="mailto:nchoate@texastribune.org">nchoate@texastribune.org</a>.</p>
+    <p>Select which option you'd prefer and then click "Copy" to copy the story text or story html:</p>
+    <div class="prose__republish--buttons">
+       <button id="text-btn" data-clipboard-target="#copytext" class="ghost-button active">View as Text</button>
+       <button id="html-btn" data-clipboard-target="#copytext-html" class="ghost-button">View as HTML</button>
+       <button id="copy" data-clipboard-target="#copytext" class="ghost-button">Copy</button>     
+    </div>
+
+  </article>
+  
+  <article id="copytext" class="prose prose__republish--body">
+    <div id="text">
+    {% for item in context.prose %}
+      {% if item.type == 'text' %}
+        {{ prose[item.type](item.value, data) }}
+      {% endif %}
+    {% endfor %}
+    <p>This story is part of The Texas Tribune's <a href="http://apps.texastribune.org/price-of-admission">Price of Admission</a> series.</p>
+    <p><a href="http://www.texastribune.org/">The Texas Tribune</a> is a nonpartisan, nonprofit media organization that informs Texans — and engages with them – about public policy, politics, government and statewide issues. Learn more at <a href="http://www.texastribune.org/">texastribune.org.</a></p>
+    </div>
+    <div id="html">
+<!--       <pre style="display:block;">
+        <code class="language-markup"> -->
+        {% for item in context.prose %}
+          {% if item.type == 'text' %}
+            {{ prose['html_text'](item.value, data) }}
+          {% endif %}
+        {% endfor %}
+        &lt;p>This story is part of The Texas Tribune's &lt;a href="http://apps.texastribune.org/price-of-admission">Price of Admission&lt;/a> series.&lt;/p>
+        &lt;p>&lt;a href="http://www.texastribune.org/">The Texas Tribune&lt;/a> is a nonpartisan, nonprofit media organization that informs Texans — and engages with them – about public policy, politics, government and statewide issues. Learn more at a href="http://www.texastribune.org/">texastribune.org&lt;/a>.&lt;/p>
+<!--         </code>
+      </pre>  -->
+    </div>
+  </article>
+  {{ navfooter(context.id, context.headline) }}
+</main>
+<footer class="footer">
+  <div class="footer-container">
+    <nav>
+      <ul>
+        <li class="copywrite">&copy; 2016 <a href="http://www.texastribune.org/">The Texas Tribune</a></li>
+      </ul>
+    </nav>
+    <nav class="last-nav">
+      <ul>
+        <li><a href="http://www.texastribune.org/about/">About Us</a></li>
+        <li><a href="http://www.texastribune.org/contact/">Contact Us</a></li>
+        <li><a href="http://www.texastribune.org/support-us/donors-and-members/">Who Funds Us?</a></li>
+        <li><a href="http://www.texastribune.org/terms-of-service/">Terms of Service</a></li>
+        <li><a href="http://www.texastribune.org/ethics/">Code of Ethics</a></li>
+        <li><a href="http://www.texastribune.org/privacy/">Privacy Policy</a></li>
+        <li class="donate"><a href="https://www.texastribune.org/join/">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script src="{{ data.PATH_PREFIX }}scripts/copy.js"></script>
+{% endblock %}

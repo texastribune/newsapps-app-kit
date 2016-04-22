@@ -1,0 +1,203 @@
+{% macro nav(id) %}
+  <nav class="nav">
+    <div class="nav--container">
+      <div class="nav--logo_tt">
+        <a href="http://www.texastribune.org"><img src="{{ PATH_PREFIX }}assets/images/logos/tt-logo.svg"></a>
+      </div>
+    </div>
+  </nav>
+{% endmacro %}
+
+<!-- Set Parameters for Nav Aside & Footer -->
+{% set 'story1_headline' = 'Donec orci lectus aliquam ut' %}
+
+{% set 'story2_headline' = 'Donec orci lectus aliquam ut' %}
+{% set 'story2_slug' = 'story-2' %}
+
+{% set 'story3_headline' = 'Donec orci lectus aliquam ut' %}
+{% set 'story3_slug' = 'story-3' %}
+
+{% set 'extra_headline' = 'Interactive' %}
+{% set 'extra_copy' = 'Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci.' %}
+{% set 'extra_slug' = 'interactive' %}
+
+{% macro navaside() %}
+<aside class="nav__aside">
+  <header>
+    <!-- Series Logo -->
+    <figure class="nav__aside--logo">
+      <img class="" src="{{ PATH_PREFIX }}assets/images/demo/fake-logo.png">
+    </figure>
+    <p class="nav__aside--subtitle">See all the stories in this series.</p>
+  </header>
+
+  <ul>
+    <a class="nav__aside--story_link" href="{{ PATH_PREFIX }}"><li class="nav__aside--story_wrapper">
+      <div class="nav__aside--story">
+        <div class="nav__aside--story_thumbnail nav__aside--story_thumbnail-i"></div>
+        <p class="nav__aside--story_part">Part I</p>
+        <h4 class="nav__aside--story_headline">{{ story1_headline }}</h4>
+      </div>    
+    </li></a>
+    <a class="nav__aside--story_link" href="{{ PATH_PREFIX }}{{ story2_slug }}"><li class="nav__aside--story_wrapper">
+      <div class="nav__aside--story">
+        <div class="nav__aside--story_thumbnail nav__aside--story_thumbnail-ii"></div>
+        <p class="nav__aside--story_part">Part II</p>
+        <h4 class="nav__aside--story_headline">{{ story2_headline }}</h4>
+      </div>       
+    </li></a>
+    <a class="nav__aside--story_link" href="{{ PATH_PREFIX }}{{ story3_slug }}"><li class="nav__aside--story_wrapper">
+      <div class="nav__aside--story">
+        <div class="nav__aside--story_thumbnail nav__aside--story_thumbnail-iii"></div>
+        <p class="nav__aside--story_part">Part III</p>
+        <h4 class="nav__aside--story_headline">{{ story3_headline }}</h4>
+      </div>
+    </li></a>
+    <a class="nav__aside--story_link" href="{{ PATH_PREFIX }}interactive"><li class="nav__aside--story_extra-wrapper">
+      <div class="nav__aside--story_part-wrapper">
+        <p class="nav__aside--story_subpart">{{ extra_headline }}</p>
+        <p class="nav__aside--story_subtitle story">{{ extra_copy }}</p>
+      </div>
+    </li></a>
+  </ul>
+</aside>
+{% endmacro %}
+
+{% macro navfooter(id, headline) %}
+  <nav class="nav__footer">
+    <div class="nav__footer--wrapper">
+      {% if id == 'i' %}
+      <a href="{{ PATH_PREFIX }}{{ story2_slug }}">
+      <div class="nav__footer--lead-art storytop--lead-art_ii"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">Part II</div>
+        <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline">{{ story2_headline }}</h1>
+        </div>     
+      </header>
+      </a>
+      {% else %}
+      <a href="{{ PATH_PREFIX }}">
+      <div class="nav__footer--lead-art storytop--lead-art_i"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">Part I</div>
+        <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline">{{ story1_headline }}</h1>
+        </div>     
+      </header>
+      </a>      
+      {% endif %}
+    </div>
+    <div class="nav__footer--wrapper">
+      {% if (id == 'i' or id == 'ii' )%}
+      <a href="{{ PATH_PREFIX }}{{ story3_slug }}">
+      <div class="nav__footer--lead-art storytop--lead-art_iii"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">Part III</div>
+        <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline">{{ story3_headline }}</h1>
+        </div>     
+      </header>
+      </a> 
+      {% else %}
+      <a href="{{ PATH_PREFIX }}{{ story2_slug }}">
+      <div class="nav__footer--lead-art storytop--lead-art_ii"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">Part II</div>
+        <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline">{{ story2_headline }}</h1>
+        </div>     
+      </header>
+      </a>     
+      {% endif %}
+    </div>
+
+    <div class="nav__footer--wrapper">
+    <!-- Special settings for interactive/podcast pages
+         currently looks for id in project data  -->
+      {% if (id == 'interactive' or id == 'podcast' ) %}
+      <a href="{{ PATH_PREFIX }}{{ story3_slug }}">
+      <div class="nav__footer--lead-art storytop--lead-art_iii"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">Part III</div>
+        <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline">{{ story3_headline }}</h1>
+        </div>     
+      </header>
+      </a>
+      {% else %}
+      <a href="{{ PATH_PREFIX }}interactive">
+      <div class="nav__footer--lead-art storytop--lead-art_interactive"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">{{ extra_headline }}</div>
+        <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline_sub">{{ extra_copy }}</h1>
+        </div>     
+      </header>
+      </a>     
+      {% endif %}
+    </div>
+    <div class="nav__footer--wrapper">
+      {% if (id == 'podcast' )%}
+      <a href="{{ PATH_PREFIX }}interactive">
+      <div class="nav__footer--lead-art storytop--lead-art_interactive"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">{{ extra_headline }}</div>
+        <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline_sub">{{ extra_copy }}</h1>
+        </div>     
+      </header>
+      </a> 
+      {% else %}
+<!--       <a href="{{ PATH_PREFIX }}podcast"> -->
+      <div class="nav__footer--lead-art storytop--lead-art_podcast"></div>
+      <header class="nav__footer--box">
+        <div class="nav__footer--part">Coming soon: Podcast</div>
+<!--    <div class="nav__footer--headline-box">
+          <h1 class="nav__footer--headline_sub">Test Short Head</h1>
+        </div>  -->    
+      </header>
+<!--       </a>   -->      
+    {% endif %}
+    </div>
+  </nav>
+  <div class="footer__credit--container">
+    <header>
+      <h3 class="footer__credit--header">Project Contributors</h3>
+    </header>
+    <div class="footer__credit--group">
+      <header>
+        <h4 class="footer__credit--subhead">Reporting</h4>
+      </header>
+      <ul class="footer__credit--list">
+        <li class="footer__credit--byline"><a href="http://www.texastribune.org/about/staff/">Name</a></li>
+        <li class="footer__credit--byline"><a href="http://www.texastribune.org/about/staff/">Name</a></li>
+      </ul>
+<!--     </div>
+    <div class="footer__credit--group"> -->
+      <header>
+        <h4 class="footer__credit--subhead">Data Analysis</h4>
+      </header>
+      <ul class="footer__credit--list">
+        <li class="footer__credit--byline"><a href="http://www.texastribune.org/about/staff/">Name</a></li>
+      </ul>
+    </div>
+    <div class="footer__credit--group">
+      <header>
+        <h4 class="footer__credit--subhead">Design and Development</h4>
+      </header>
+      <ul class="footer__credit--list">
+        <li class="footer__credit--byline"><a href="http://www.texastribune.org/about/staff/">Name</a></li>
+        <li class="footer__credit--byline"><a href="http://www.texastribune.org/about/staff/">Name</a></li>
+        <li class="footer__credit--byline"><a href="http://www.texastribune.org/about/staff/">Name</a></li>
+      </ul>
+      <header>
+        <h4 class="footer__credit--subhead">Photo Editor</h4>
+      </header>
+      <ul class="footer__credit--list">
+        <li class="footer__credit--byline"><a href="http://www.texastribune.org/about/staff/">Name</a></li>
+      </ul>
+    </div>
+
+  </div>
+{% endmacro %}

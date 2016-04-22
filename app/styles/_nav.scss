@@ -1,0 +1,229 @@
+// Styles for Nav Masthead, Inside Story Nav (Aside) & Nav Footer
+
+.nav {
+  $nav-bp: 570px;
+
+  // Nav Masthead
+  background-color: $tribune-black;
+  font-family: $sans-serif;
+
+  &--container {
+    margin: 0 auto;
+    max-width: $page-width;
+    text-align: center;
+    width: 100%;
+  }
+
+  &--logo_tt {
+    display: inline-block;
+    padding: .5em 1em .25em 0;
+  }
+
+  // Inside Story Navigation
+  &__aside {
+    @extend %left-lock;
+    padding: 0 0 0 1rem;
+
+    @include susy-media($prose-desktop-bp) {
+      padding: 0;
+    }
+
+    li {
+      &:active,
+      &:hover {
+        h4 {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &--logo {
+      img {
+        width: 100%;
+      }
+    }
+
+    &--header {
+      @extend %subhead;
+    }
+
+    &--subhead {
+      @extend %subhead;
+      color: $color-secondary;
+    }
+
+    &--subtitle {
+      @extend %subtitle;
+
+      &.story {
+        @include font-size($s);
+        color: $color-secondary;
+        font-weight: 400;
+        margin-bottom: .25em;
+
+        &:hover,
+        &:active {
+          text-decoration: underline;
+        }
+
+        a {
+          color: $color-secondary;
+          text-decoration: underline;
+          &:hover,
+          &:active {
+            color: $color-primary;
+          }
+        }
+      }
+
+      &.unlink {
+        &:hover,
+        &:active {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &--story {
+      margin: 0 0 .5rem;
+    }
+
+    &--story_link {
+      @include clearfix;
+      color: #000;
+      text-decoration: none;
+
+      &.half {
+        float: left;
+        width: 50%;
+      }
+    }
+
+    &--story_wrapper {
+      @include clearfix;
+      margin-bottom: .65rem;
+    }
+
+    &--story_thumbnail { 
+      background-position: center center;
+      background-size: cover;
+      float: left;
+      height: 80px;
+      margin: 0 .5rem 0 0;
+      width: 80px;
+
+      &-i {
+        background-image: url(../assets/images/demo/test.jpg);
+      }
+
+      &-ii {
+        background-image: url(../assets/images/demo/test2.jpg);
+      }
+
+      &-iii {
+        background-image: url(../assets/images/demo/test3.jpg); 
+      }
+    }
+
+    &--story_part {
+      @include part-box($xxs);
+      margin: 0 0 .5em 0;
+      // position: absolute;
+      width: 68px;
+    }
+
+    &--story_headline {
+      @include headline($base, $m);
+      color: $color-secondary;
+
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+
+    &--story_subpart {
+      @include font-size($xs);
+      color: $color-primary;
+      font-family: $serif;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    &--story_extra {
+
+      &-wrapper {
+        padding: 0 .5em 0 0;
+      }
+
+      &-subject {
+        @include headline($s, $base);
+        &:hover,
+        &:active {
+          text-decoration: underline;
+        }      
+      }
+    }
+    
+  }
+
+  &__footer {
+    $footer-nav-bp: 700px;
+    $footer-height-desktop: 18rem;
+    @include clearfix;
+    @include story-header(12rem, $footer-height-desktop, 12rem); 
+    margin: 0 0 1rem 0;
+
+    &--headline {
+      @include headline($m, $l);
+      color: $color-secondary;
+
+      &_sub {
+        @include headline($base, $m);
+        color: $color-secondary;
+      }
+    }
+
+    &--headline-box {
+      padding: 1rem;
+
+      @include susy-media($prose-width) {
+        padding: 1rem 1rem .25rem 3rem;
+      }
+    }
+
+    &--box {
+      @include clearfix;
+      position: absolute;
+      bottom: 0;  
+    }
+
+    &--part {
+      @include susy-media($prose-width) {
+        margin: 0 0 1rem 2rem;
+      }
+    }
+
+    &--wrapper {
+      position: relative;
+      float: left;
+      width: 100%;
+      margin: 0 0 1rem;
+
+      @include susy-media($footer-nav-bp) {
+        margin: 0 2rem 1rem 0;
+        width: 45%;
+      }
+
+      &:hover {
+        h1 {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+
+
+
