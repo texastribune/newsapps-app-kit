@@ -209,7 +209,7 @@ $sans-serif: open-sans, "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-s
   &:active,
   &:hover {
     text-decoration: underline;
-  } 
+  }
 }
 
 // Container styles for asides
@@ -234,9 +234,9 @@ $sans-serif: open-sans, "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-s
   text-transform: uppercase;
 }
 
-// Story Header styles 
+// Story Header styles
 // + Extended on .storytop and .nav__footer
-// + Adjusts lead art height & 
+// + Adjusts lead art height &
 //   position of Part Box and Headline
 
 @mixin story-header($height, $height-desktop, $img-height) {
