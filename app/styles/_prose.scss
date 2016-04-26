@@ -1,10 +1,11 @@
 .prose {
+  @include clearfix;
   @include font-size($base);
   color: $color-dk-gray;
   font-family: $serif;
   line-height: 1.5;
   margin: 1rem 0 0;
-  
+
   > p {
     @extend %left-padding;
     color: $color-dk-gray;
@@ -15,7 +16,7 @@
     @include susy-media($prose-width) {
       padding: 0 1rem 0 3rem;
     }
-    
+
     a {
       @extend %link;
     }
@@ -66,7 +67,7 @@
     }
   }
 
-  // <ul> 
+  // <ul>
   &__list {}
 
   // <li>
@@ -155,7 +156,7 @@
         float: right;
         margin-left: 1rem;
         width: 40%;
-      } 
+      }
     }
   }
 
@@ -170,7 +171,7 @@
 }
 
 .series--logo {
-  img { 
+  img {
     margin: .8em auto;
     max-height: 5em;
   }
@@ -240,7 +241,7 @@
     font-family: $sans-serif;
     line-height: 1.3;
     margin: .75rem 0 0;
-  
+
     a {
       color: $color-secondary;
       font-weight: 600;
@@ -249,7 +250,7 @@
       &:active,
       &:hover {
         text-decoration: underline;
-      }      
+      }
     }
   }
 
@@ -291,7 +292,7 @@
       line-height: 1.5;
       margin: 0 0 .75em;
     }
-  } 
+  }
 
   &__date {
     @include font-size($m);
