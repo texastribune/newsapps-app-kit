@@ -7,7 +7,7 @@ This package helps jump start special Tribune features and series that are built
 Run this command in your project's folder:
 
 ```sh
-curl -fsSL https://github.com/texastribune/newsapps-app-kit/archive/master.tar.gz | tar -xz --strip-components=1
+curl -fsSL https://github.com/texastribune/newsapps-app-kit/archive/price-of-admission-template.tar.gz | tar -xz --strip-components=1
 ```
 
 Next, `npm install`.
@@ -16,7 +16,7 @@ If this is your first time to ever use the kit, you need to follow the steps in 
 
 ## Creating Templates with Google Docs & Spreadsheets
 
-This kit allows you to pull in content from Google Docs and Spreadsheets. To use the story.html template file, you'll need to set up a Google doc using our [basic template](https://docs.google.com/document/d/1iSsqopd2QLhlQDx0gVX9rYoUp-akX1tdZMF6910BhaU) and follow these steps. 
+This kit allows you to pull in content from Google Docs and Spreadsheets. To use the story.html template file, you'll need to set up a Google doc using our [basic template](https://docs.google.com/document/d/1iSsqopd2QLhlQDx0gVX9rYoUp-akX1tdZMF6910BhaU) and follow these steps.
 
 #### Set up `config.js`
 
@@ -52,7 +52,7 @@ Additional HTML pages set up in your app will set the name of the file as the sl
 + *id* — This is the Part Number for the series. It's used to set up the story navigation in the `.nav__aside` and `.nav__footer` modules found in `/app/styles/_nav.scss`. It's also used to indicate which lead art class to use, which you define in `/app/styles/_utils/` > `@mixin story-header`.
 + *script* — Sets which script file to load in the `base.html`. You don't need to include the extension `.js`. Default: `main`
 + *headline* - Your story headline. Appears in the `.storytop`, `.nav__aside` and `.nav__footer`
-+ *pub_date* - Publish date. Use AP style :) 
++ *pub_date* - Publish date. Use AP style :)
 + *slug* - URL slug for your story. It must match the filename of the HTML file for that story.
 + *short_head* - Shorter headline, in case you need it.
 + *[authors]* - Currently supports up 2 individual author names. If you include email, the name will be linked. See `/app/templates/macros/authors.html`
@@ -80,7 +80,7 @@ Additional HTML pages set up in your app will set the name of the file as the sl
 
 ## Webpack
 
-This kit uses the [webpack module bundler](https://webpack.github.io/). You can see an example of how to import files in `app/scripts/main.js` - as the kit comes preloaded with an import of the `app/scripts/includes/adLoader.js` partial script. If you're using a big library like JQuery or D3, we recommend downloading the node module, and adding it to the `webpack.config.js` file as a plugin. 
+This kit uses the [webpack module bundler](https://webpack.github.io/). You can see an example of how to import files in `app/scripts/main.js` - as the kit comes preloaded with an import of the `app/scripts/includes/adLoader.js` partial script. If you're using a big library like JQuery or D3, we recommend downloading the node module, and adding it to the `webpack.config.js` file as a plugin.
 Here's an example:
 
 ```
