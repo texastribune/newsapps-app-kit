@@ -36,9 +36,10 @@ node_modules
 # assets
 app/assets/fonts/*
 !app/assets/fonts/.gitkeep
-app/assets/images/*
-!app/assets/images/.gitkeep
 !app/assets/images/demo/*
+!app/assets/images/logos/*
+!app/assets/images/.gitkeep
+
 
 # Temp project directory
 .tmp
