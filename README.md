@@ -24,6 +24,8 @@ curl -fsSL https://github.com/texastribune/newsapps-app-kit/archive/master.tar.g
 
 Next, `npm install`.
 
+This project requires [Node v4.0.0](https://nodejs.org/en/blog/release/v4.0.0/). If you hit a syntax error on your initial attempts to serve the project locally, try updating your node version.
+
 If this is your first time to ever use the kit, you need to follow the steps in your terminal for Google authorization, i.e. go to the given link and paste the token into the terminal.
 
 Update the `config.js`, and add the unique Google Tokens for your  document(s) and spreadsheet(s). For spreadsheets, you'll need to designate how to process the data, as either a `keyvalue` or `objectlist`.
