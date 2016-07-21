@@ -1,8 +1,8 @@
 {
   "private": true,
   "config": {
-    "s3_bucket": "apps.texastribune.org",
-    "slug": "price-of-admission"
+    "s3_bucket": "moose.texastribune.org",
+    "slug": "antlers"
   },
   "devDependencies": {
     "archieml": "^0.3.1",
